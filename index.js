@@ -6,11 +6,17 @@ const lowerCaseLetters="abcdefghijklmnopqrstuvwxyz";
 let specialCharacters = "!@#$%^&*()_+=-`;:,./?{}|[]\"~<> ";  
 let numbers = "0123456789";      
 
-function showPassword(){       
-	var x = document.getElementById("show_hide").checked;            
-	if(x){                                
-		passwordbox.type = "text";                          
-	}else{                                                            
-		passwordbox.type = "password";                                              
-	}      
-}   
+const allchars = UpperCaseLetters+lowerCaseLetters+numbers+specialCharacters;
+
+function createpassword(){
+	let password ="";
+	password+= UpperCaseLetters[Math.floor(Math.random()*UpperCaseLetters.length)];
+	password+= lowerCaseLetters[Math.floor(Math.random()*lowerCaseLetters.length)];
+	password+= numbers[Math.floor(Math.random()*numbers.length)];
+	password+= specialCharacters[Math.floor(Math.random()*specialCharacters.length)];
+
+	while(length>password.length){
+		password+=allchars[Math.floor(Math.random()*allchars.length)];
+	}
+	passwordbox.value=password;
+}
